@@ -10,29 +10,30 @@ namespace Yad2.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        static List<Products> products = new List<Products>();
+        static List<Product> products = new List<Product> { new Product{ Id=1} };
         // GET: api/<productsController>
         [HttpGet]
-        public IEnumerable<Products> Get()
+        public IEnumerable<Product> Get()
         {
             return products;
         }
 
         // GET api/<productsController>/5
         [HttpGet("{id}")]
-        public Products Get(int id)
+        public ActionResult Get(int id)
         {
+           
             foreach (var product in products)
             {
                 if (product.Id == id)
-                    return product;
+                    return Ok(product);
             }
-            return new Products();
+            return NotFound();
         }
 
         // POST api/<productsController>
         [HttpPost]
-        public void Post([FromBody] Products value)
+        public void Post([FromBody] Product value)
         {
             products.Add(value);
 
@@ -40,7 +41,7 @@ namespace Yad2.Controllers
 
         // PUT api/<productsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Products value)
+        public void Put(int id, [FromBody] Product value)
         {
             for (int i = 0; i < products.Count; i++)
             {
