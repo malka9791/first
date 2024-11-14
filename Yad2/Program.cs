@@ -1,3 +1,6 @@
+using Yad2.data;
+using Yad2.Interface;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,6 +13,8 @@ builder.Services.AddCors(opt => opt.AddPolicy("MyPolicy", policy =>
 {
     policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
 }));
+builder.Services.AddScoped<IDataContext, DataContext>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

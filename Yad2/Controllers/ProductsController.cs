@@ -1,6 +1,7 @@
 ﻿using Yad2;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
+using Yad2.Interface;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,12 +11,17 @@ namespace Yad2.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        static List<Product> products = new List<Product> { new Product{ Id=1} };
+        private static IDataContext _context;
+
+        public ProductsController(IDataContext context)
+        {
+            _context = context;
+        }
         // GET: api/<productsController>
         [HttpGet]
         public IEnumerable<Product> Get()
         {
-            return products;
+            return _context.Products;
         }
 
         // GET api/<productsController>/5
@@ -23,7 +29,7 @@ namespace Yad2.Controllers
         public ActionResult Get(int id)
         {
            
-            foreach (var product in products)
+            foreach (var product in _context.Products)
             {
                 if (product.Id == id)
                     return Ok(product);
@@ -35,7 +41,7 @@ namespace Yad2.Controllers
         [HttpPost]
         public void Post([FromBody] Product value)
         {
-            products.Add(value);
+            _context.Products.Add(value);
 
         }
 
@@ -43,11 +49,11 @@ namespace Yad2.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Product value)
         {
-            for (int i = 0; i < products.Count; i++)
+            for (int i = 0; i < _context.Products.Count; i++)
             {
-                if (products[i].Id == id)
+                if (_context.Products[i].Id == id)
                 {
-                    products[i] = value;
+                    _context.Products[i] = value;
                 }
             }
         }
@@ -56,16 +62,16 @@ namespace Yad2.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            foreach (var product in products)
+            foreach (var product in _context.Products)
             {
                 if (product.Id == id)
-                { products.Remove(product); return; }
+                { _context.Products.Remove(product); return; }
             }
         }
         [HttpPut("{id}/price")]
         public void Status(int id, int price)
         {
-            foreach (var product in products)
+            foreach (var product in _context.Products)
             {
                 if (product.Id == id)
                 {

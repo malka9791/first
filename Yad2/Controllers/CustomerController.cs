@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Yad2;
+using Yad2.Interface;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,18 +12,22 @@ namespace Yad2.Controllers
     {
         // GET: api/<CustomerController>
 
-        static List<Customer> customers = new List<Customer>();
+        private readonly IDataContext _context;
+        public CustomerController(IDataContext context)
+        {
+            _context = context;
+        }
         [HttpGet]
         public IEnumerable<Customer> Get()
         {
-            return customers;
+            return _context.Customers;
         }
 
         // GET api/<CustomerController>/5
         [HttpGet("{id}")]
         public Customer Get(int id)
         {
-            foreach (Customer customer in customers)
+            foreach (Customer customer in _context.Customers)
             {
                 if (customer.Id == id)
                     return customer;
@@ -34,18 +39,18 @@ namespace Yad2.Controllers
         [HttpPost]
         public void Post([FromBody] Customer value)
         {
-            customers.Add(value);
+            _context.Customers.Add(value);
         }
 
         // PUT api/<CustomerController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Customer value)
         {
-            for (int i = 0; i < customers.Count; i++)
+            for (int i = 0; i < _context.Customers.Count; i++)
             {
-                if (customers[i].Id == id)
+                if (_context.Customers[i].Id == id)
                 {
-                    customers[i] = value;
+                    _context.Customers[i] = value;
                     return;
                 }
             }
@@ -55,11 +60,11 @@ namespace Yad2.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            foreach (Customer customer in customers)
+            foreach (Customer customer in _context.Customers)
             {
                 if (customer.Id == id)
                 {
-                    customers.Remove(customer);
+                    _context.Customers.Remove(customer);
                     return;
                 }
             }
@@ -67,7 +72,7 @@ namespace Yad2.Controllers
         [HttpPut("{id}/status")]
         public void Kind(int id, bool status)
         {
-            foreach (var customer in customers)
+            foreach (var customer in _context.Customers)
             {
                 if (customer.Id == id)
                 {

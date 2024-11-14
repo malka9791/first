@@ -6,16 +6,24 @@ using System.Text;
 using System.Threading.Tasks;
 using Yad2;
 using Yad2.Controllers;
+using Yad2.data;
+using Yad2.Interface;
 
 namespace UnitTest
 {
     public class TestControllerPro
     {
+        private readonly ProductsController _context;
+        public TestControllerPro()
+        {
+            FakeContexet context= new FakeContexet();
+            _context = new ProductsController(context);
+        }
         [Fact]
         public void GetAll_ReturnsOk()
         {
             //act
-            var controller = new ProductsController();
+            var controller = _context;
             var result = controller.Get();
             //assert
             Assert.IsType<List<Product>>(result);
@@ -26,7 +34,7 @@ namespace UnitTest
             //arrange
             var id = 1;
             //act
-            var controller = new ProductsController();
+            var controller =_context;
             var result = controller.Get(id);
             //assert
             Assert.IsType<OkObjectResult>(result);
@@ -34,15 +42,13 @@ namespace UnitTest
         [Fact]
         public void GetAll_NotEmpty()
         {
-            var controller = new ProductsController();
-            var result = controller.Get();
+            var result = _context.Get();
             Assert.NotEqual(0,result.Count());
         }
         [Fact]
         public void GetAll_IsEmpty()
         {
-            var controller = new ProductsController();
-            var result = controller.Get();
+            var result = _context.Get();
             Assert.Equal(0, result.Count());
         }
     }
