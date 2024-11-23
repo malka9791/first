@@ -1,4 +1,4 @@
-﻿namespace Yad2
+﻿namespace Yad2.CORE.Models
 {
     public class Product
     {

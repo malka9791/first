@@ -1,6 +1,6 @@
 ﻿using System.Net.Mail;
 
-namespace Yad2
+namespace Yad2.CORE.Models
 {
     public class Customer
     {
