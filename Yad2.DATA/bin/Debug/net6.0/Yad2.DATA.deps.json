@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Yad2.DATA/1.0.0": {
+        "dependencies": {
+          "Yad2.CORE": "1.0.0"
+        },
+        "runtime": {
+          "Yad2.DATA.dll": {}
+        }
+      },
+      "Yad2.CORE/1.0.0": {
+        "runtime": {
+          "Yad2.CORE.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Yad2.DATA/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Yad2.CORE/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

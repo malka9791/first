@@ -1,7 +1,8 @@
 ﻿using Yad2;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
-using Yad2.Interface;
+using Yad2.CORE.Services;
+using Yad2.CORE.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,37 +12,33 @@ namespace Yad2.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private static IDataContext _context;
+        private static IProductService _productService;
 
-        public ProductsController(IDataContext context)
+        public ProductsController(IProductService context)
         {
-            _context = context;
+            _productService = context;
         }
         // GET: api/<productsController>
         [HttpGet]
         public IEnumerable<Product> Get()
         {
-            return _context.Products;
+            return _productService.GetAll();
         }
 
         // GET api/<productsController>/5
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public Product Get(int id)
         {
-           
-            foreach (var product in _context.Products)
-            {
-                if (product.Id == id)
-                    return Ok(product);
-            }
-            return NotFound();
+
+            return _productService.GetById(id);
+  
         }
 
         // POST api/<productsController>
         [HttpPost]
         public void Post([FromBody] Product value)
         {
-            _context.Products.Add(value);
+            _productService.AddProduct(value);
 
         }
 
@@ -49,36 +46,19 @@ namespace Yad2.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Product value)
         {
-            for (int i = 0; i < _context.Products.Count; i++)
-            {
-                if (_context.Products[i].Id == id)
-                {
-                    _context.Products[i] = value;
-                }
-            }
+            _productService.PutValue(id, value);
         }
 
         // DELETE api/<productsController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            foreach (var product in _context.Products)
-            {
-                if (product.Id == id)
-                { _context.Products.Remove(product); return; }
-            }
+            _productService.Delete(id);
         }
         [HttpPut("{id}/price")]
-        public void Status(int id, int price)
+        public void UpdatePrice(int id, int price)
         {
-            foreach (var product in _context.Products)
-            {
-                if (product.Id == id)
-                {
-                    product.Price = price;
-                    return;
-                }
-            }
+           _productService.UpdatePrice(id, price);
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Qsnm14RUNiR/cwxEQtf3ybQaBGFNeytY5WYgcekM/T2aMj6zfAySPdkO2wg1pVl8W4C1Hsiq6i2j9X3OajKv0A==",
+  "dgSpecHash": "i5B9YgfpcFV6WxW7O/c+4WUuLo2ptp4ANk0Tv79MZTYMhUQkYS0ESCp0rqDv5nWq0rDGVXIMSP0YMkIwoFXrFA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user1\\Documents\\מלי\\שנה ב\\net core\\Yad2\\Yad2\\Yad2.csproj",
+  "projectFilePath": "C:\\Users\\user1\\Documents\\מלי\\שנה ב\\net core\\Yad2\\Yad2\\Yad2.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user1\\.nuget\\packages\\csvhelper\\33.0.1\\csvhelper.33.0.1.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",

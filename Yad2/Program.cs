@@ -1,5 +1,8 @@
-using Yad2.data;
-using Yad2.Interface;
+using Yad2.CORE.Repositories;
+using Yad2.CORE.Services;
+using Yad2.DATA;
+using Yad2.DATA.Repositories;
+using Yad2.SERVICE;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,14 @@ builder.Services.AddCors(opt => opt.AddPolicy("MyPolicy", policy =>
 {
     policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
 }));
-builder.Services.AddScoped<IDataContext, DataContext>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IAdvertiserRepository, AdvertiserRepository>();
+builder.Services.AddScoped<IAdvertiserService, AdvertiserService>();
+builder.Services.AddSingleton<DataContext>();
+
 
 var app = builder.Build();
 

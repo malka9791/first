@@ -6,6 +6,6 @@
         public string Description { get; set; }
         public string Status { get; set; }
 
-        public int Price { get; set; } = 0;
+        public double Price { get; set; } = 0;
     }
 }

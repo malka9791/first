@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Yad2\Yad2.csproj" />
+    <ProjectReference Include="..\Yad2\Yad2.API.csproj" />
   </ItemGroup>
 
 </Project>

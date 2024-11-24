@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public string Kind_Advertiser { get; set; }
         public int Id_product { get; set; }
-        public double Price { get; set; }
+        public string Status { get; set; }
 
     }
 }
