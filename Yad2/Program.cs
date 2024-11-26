@@ -24,7 +24,7 @@ builder.Services.AddScoped<IAdvertiserRepository, AdvertiserRepository>();
 builder.Services.AddScoped<IAdvertiserService, AdvertiserService>();
 builder.Services.AddSingleton<DataContext>();
 
-
+builder.Services.AddDbContext<DataContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

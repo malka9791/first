@@ -18,7 +18,7 @@ namespace Yad2.DATA.Repositories
         }
         public List<Product> GetList()
         {
-            return _context.Products;
+            return _context.Products.ToList();
         }
         public Product SearchId(int id) 
         {
@@ -35,13 +35,8 @@ namespace Yad2.DATA.Repositories
         }
         public void PutVal(int id, Product product)
         {
-            for (int i = 0; i < _context.Products.Count; i++)
-            {
-                if (_context.Products[i].Id == id)
-                {
-                    _context.Products[i] = product;
-                }
-            }
+            Product item=_context.Products.ToList().Find(x => x.Id == id);
+            item = product;
         }
         public void DeleteVal(int id)
         {

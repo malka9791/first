@@ -17,7 +17,7 @@ namespace Yad2.DATA.Repositories
         }
         public List<Advertiser> GetList()
         {
-            return _dataContext.Advertisers;
+            return _dataContext.Advertisers.ToList();
         }
         public Advertiser SearchId(int id)
         {
@@ -35,14 +35,9 @@ namespace Yad2.DATA.Repositories
         }
         public void PutVal(int id, Advertiser advertiser)
         {
-            for (int i = 0; i < _dataContext.Advertisers.Count; i++)
-            {
-                if (_dataContext.Advertisers[i].Id == id)
-                {
-                    _dataContext.Advertisers[i] = advertiser;
-                    return;
-                }
-            }
+            
+          Advertiser advertiser1= _dataContext.Advertisers.ToList().Find(x => x.Id == id);
+            advertiser1 = advertiser;
         }
         public void DeleteVal(int id)
         {

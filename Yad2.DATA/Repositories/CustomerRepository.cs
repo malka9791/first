@@ -17,7 +17,7 @@ namespace Yad2.DATA.Repositories
         }
         public List<Customer> GetList()
         {
-            return _context.Customers;
+            return _context.Customers.ToList();
         }
         public Customer GetId(int id)
         {
@@ -34,14 +34,8 @@ namespace Yad2.DATA.Repositories
         }
         public void UpdateVal(int id, Customer customer)
         {
-            for (int i = 0; i < _context.Customers.Count; i++)
-            {
-                if (_context.Customers[i].Id == id)
-                {
-                    _context.Customers[i] = customer;
-                    return;
-                }
-            }
+            Customer item= _context.Customers.ToList().Find(x=>x.Id == id);
+            item = customer;
         }
         public void DeleteVal(int id)
         {
