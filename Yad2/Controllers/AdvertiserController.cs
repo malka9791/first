@@ -39,17 +39,17 @@ namespace Yad2.Controllers
         }
 
         // PUT api/<AdvertisersController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Advertiser value)
+        [HttpPut(/*"{id}"*/)]
+        public void Put([FromBody] Advertiser value)
         {
-            _advertiserService.PutValue(id, value);
+            _advertiserService.PutValue( value);
         }
 
         // DELETE api/<AdvertisersController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{advertisers}")]
+        public void Delete(Advertiser advertiser)
         {
-            _advertiserService.Delete(id);
+            _advertiserService.Delete(advertiser);
         }
         [HttpPut("{id}/status")]
         public void Status(int id, string status)

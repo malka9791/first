@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Formats.Asn1;
 using System.Globalization;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Yad2.DATA
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=My_db");
+            optionsBuilder.LogTo(messege => Debug.WriteLine(messege));
         }
         //public DataContext(
         //{

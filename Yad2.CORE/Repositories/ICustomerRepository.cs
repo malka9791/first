@@ -9,11 +9,11 @@ namespace Yad2.CORE.Repositories
 {
     public interface ICustomerRepository
     {
-        List<Customer> GetList();
-        Customer GetId(int id);
-        void AddVal(Customer customer);
-        void UpdateVal(int id,Customer customer);
-        void DeleteVal(int id);
+        //List<Customer> GetList();
+        //Customer GetId(int id);
+        //void AddVal(Customer customer);
+        //void UpdateVal(int id,Customer customer);
+        //void DeleteVal(int id);
         public void Status(int id, bool status);
 
     }

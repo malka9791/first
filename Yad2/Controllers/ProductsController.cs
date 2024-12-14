@@ -43,17 +43,17 @@ namespace Yad2.Controllers
         }
 
         // PUT api/<productsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Product value)
+        [HttpPut("{products}")]
+        public void Put(/*int id,*/ [FromBody] Product value)
         {
-            _productService.PutValue(id, value);
+            _productService.PutValue(/*id,*/ value);
         }
 
         // DELETE api/<productsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{product}")]
+        public void Delete(Product p)
         {
-            _productService.Delete(id);
+            _productService.Delete(p);
         }
         [HttpPut("{id}/price")]
         public void UpdatePrice(int id, int price)

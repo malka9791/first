@@ -9,12 +9,12 @@ namespace Yad2.CORE.Repositories
 {
     public interface IAdvertiserRepository
     {
-        List<Advertiser> GetList();
-        Advertiser SearchId(int id);
-        void AddVal(Advertiser val);
-        void PutVal(int id,Advertiser val);
-        void DeleteVal(int id);
-        public void StatusVal(int id, string status);
+        //List<Advertiser> GetList();
+        //Advertiser SearchId(int id);
+        //void AddVal(Advertiser val);
+        //void PutVal(int id,Advertiser val);
+        //void DeleteVal(int id);
+         void StatusVal(int id, string status);
 
     }
 }

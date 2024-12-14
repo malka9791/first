@@ -11,31 +11,31 @@ namespace Yad2.SERVICE
 {
     public class ProductService:IProductService
     {
-        private readonly IProductRepository _productRepository;
-        public ProductService(IProductRepository repository)
+        private readonly IRepositoryManager _productRepository;
+        public ProductService(IRepositoryManager productrepository)
         {
-            _productRepository = repository;
+            _productRepository = productrepository;
         }
-        public List<Product> GetAll()
+        public IEnumerable<Product> GetAll()
         {
-            return _productRepository.GetList();
+            return _productRepository.Products.GetAll();
         }
         public Product GetById(int id) {
-            return _productRepository.SearchId(id);
+            return _productRepository.Products.GetById(id);
         }
         public void AddProduct(Product product) {
-             _productRepository.AddPro(product);
+             _productRepository.Products.Add(product);
         }
-        public void PutValue(int id, Product product)
+        public void PutValue(Product product)
         {
-            _productRepository.PutVal(id,product);
+            _productRepository.Products.Update(product);
         }
-        public void Delete(int id) {
-            _productRepository.DeleteVal(id);
+        public void Delete(Product p) {
+            _productRepository.Products.Delete(p);
         }
         public void UpdatePrice(int id,double price)
         {
-            _productRepository.Update(id,price);
+            _productRepository.Product.UpdatePrice(id,price);
         }
     }
 }

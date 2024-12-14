@@ -22,7 +22,9 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IAdvertiserRepository, AdvertiserRepository>();
 builder.Services.AddScoped<IAdvertiserService, AdvertiserService>();
-builder.Services.AddSingleton<DataContext>();
+builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
+builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
+//builder.Services.AddSingleton<DataContext>();
 
 builder.Services.AddDbContext<DataContext>();
 var app = builder.Build();

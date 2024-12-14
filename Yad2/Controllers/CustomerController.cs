@@ -40,17 +40,29 @@ namespace Yad2.API.Controllers
         }
 
         // PUT api/<CustomerController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Customer value)
+        [HttpPut("{customer}")]
+
+
+
+
+
+
+
+
+
+
+
+
+        public void Put(/*int id,*/ [FromBody] Customer value)
         {
-            _customerService.Update(id, value);
+            _customerService.Update(value);
         }
 
         //// DELETE api/<CustomerController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{customer}")]
+        public void Delete(Customer c)
         {
-          _customerService.Delete(id);
+          _customerService.Delete(c);
         }
         [HttpPut("{id}/Status")]
         public void UpdateStatus(int id, bool status)

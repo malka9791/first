@@ -8,34 +8,34 @@ using Yad2.CORE.Repositories;
 using Yad2.CORE.Services;
 namespace Yad2.SERVICE
 {
-    public class CustomerService:ICustomerService
+    public class CustomerService: ICustomerService
     {
-        private readonly ICustomerRepository _customerRepository;
-        public CustomerService(ICustomerRepository customerRepository)
+        private readonly IRepositoryManager _customerRepository;
+        public CustomerService(IRepositoryManager customerepository)
         {
-            _customerRepository = customerRepository;
+            _customerRepository = customerepository;
         }
-        public List<Customer> GetAll()
+        public IEnumerable<Customer> GetAll()
         {
-            return _customerRepository.GetList();
+            return _customerRepository.Customers.GetAll();
         }
         public Customer GetById(int id)
         {
-            return _customerRepository.GetId(id);
+            return _customerRepository.Customers.GetById(id);
         }
         public void AddValue(Customer customer) 
         { 
-            _customerRepository.AddVal(customer);
+            _customerRepository.Customers.Add(customer);
         }
-        public void Update(int id,Customer customer) {
-            _customerRepository.UpdateVal(id, customer);
+        public void Update(Customer customer) {
+            _customerRepository.Customers.Update( customer);
         }
-        public void Delete(int id)
+        public void Delete(Customer c)
         {
-            _customerRepository.DeleteVal(id);
+            _customerRepository.Customers.Delete(c);
         }
-        public void UpdateStatus(int id,bool status) { 
-            _customerRepository.Status(id, status);
+        public void UpdateStatus(int id,bool status) {
+            _customerRepository.Customer.Status(id, status);
         }
     }
 }

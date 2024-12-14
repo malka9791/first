@@ -11,32 +11,36 @@ namespace Yad2.SERVICE
 {
     public class AdvertiserService: IAdvertiserService
     {
-        private readonly IAdvertiserRepository _advertiserRepository;
-        public AdvertiserService(IAdvertiserRepository advertiserRepository)
+        private readonly IRepositoryManager _advertiserRepository;
+        public AdvertiserService(IRepositoryManager advertiserRepository)
         {
             _advertiserRepository = advertiserRepository;
         }
-        public List<Advertiser> GetAll()
+        public IEnumerable<Advertiser> GetAll()
         {
-            return _advertiserRepository.GetList();
+            return _advertiserRepository.Advertisers.GetAll();
         }
         public Advertiser GetById(int id)
         {
-            return _advertiserRepository.SearchId(id);
+            return _advertiserRepository.Advertisers.GetById(id);
         }
         public void AddValue(Advertiser advertiser) {
-            _advertiserRepository.AddVal(advertiser);
+            _advertiserRepository.Advertisers.Add(advertiser);
+            _advertiserRepository.Save();
         }
-        public void PutValue(int id,Advertiser advertiser) 
+        public void PutValue(Advertiser advertiser) 
         {
-            _advertiserRepository.PutVal(id,advertiser);
+            _advertiserRepository.Advertisers.Update(advertiser);
+            _advertiserRepository.Save();
         }
-        public void Delete(int id) {
-            _advertiserRepository.DeleteVal(id);
+        public void Delete(Advertiser a) {
+            _advertiserRepository.Advertisers.Delete(a);
+            _advertiserRepository.Save();
         }
         public void Status(int id,string status)
         {
-            _advertiserRepository.StatusVal(id,status);
+            _advertiserRepository.Advertiser.StatusVal(id, status);
+            _advertiserRepository.Save();
         }
     }
 }
