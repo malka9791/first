@@ -7,5 +7,8 @@
         public string Status { get; set; }
 
         public double Price { get; set; } = 0;
+        public List<Customer> Customers { get; set; }
+        public int AdvId { get; set; }
+        public Advertiser Advertiser { get; set; }
     }
 }

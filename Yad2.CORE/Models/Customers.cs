@@ -8,5 +8,6 @@ namespace Yad2.CORE.Models
         public string Name { get; set; }
         public string Mail { get; set; }
         public bool IsActive { get; set; }
+       public List<Product> Products { get; set; }
     }
 }

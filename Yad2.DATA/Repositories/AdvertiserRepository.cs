@@ -12,11 +12,12 @@ namespace Yad2.DATA.Repositories
     {
         public AdvertiserRepository(DataContext context):base(context) 
         { 
+
         }
-      
+
         #region no
         //private readonly DataContext _dataContext;
-        
+
         //public List<Advertiser> GetList()
         //{
         //    return _dataContext.Advertisers.ToList();
@@ -37,7 +38,7 @@ namespace Yad2.DATA.Repositories
         //}
         //public void PutVal(int id, Advertiser advertiser)
         //{
-            
+
         //  Advertiser advertiser1= _dataContext.Advertisers.ToList().Find(x => x.Id == id);
         //    advertiser1 = advertiser;
         //}
@@ -53,7 +54,7 @@ namespace Yad2.DATA.Repositories
         //    }
         //}
         #endregion
-        
+
 
         public void StatusVal(int id,string status)
         {

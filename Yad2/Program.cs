@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Yad2.CORE.Repositories;
 using Yad2.CORE.Services;
 using Yad2.DATA;
@@ -27,9 +28,13 @@ builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
 //builder.Services.AddSingleton<DataContext>();
 
 builder.Services.AddDbContext<DataContext>();
+builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.WriteIndented = true;
+});
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

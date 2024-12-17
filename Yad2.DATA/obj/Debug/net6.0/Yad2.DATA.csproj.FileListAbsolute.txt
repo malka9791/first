@@ -1,4 +1,5 @@
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\bin\Debug\net6.0\Yad2.DATA.deps.json
+C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\bin\Debug\net6.0\Yad2.DATA.runtimeconfig.json
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\bin\Debug\net6.0\Yad2.DATA.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\bin\Debug\net6.0\Yad2.DATA.pdb
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\bin\Debug\net6.0\Yad2.CORE.dll
@@ -12,6 +13,5 @@ C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\obj\Debug\net6
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\obj\Debug\net6.0\Yad2.DATA.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\obj\Debug\net6.0\refint\Yad2.DATA.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\obj\Debug\net6.0\Yad2.DATA.pdb
-C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\obj\Debug\net6.0\ref\Yad2.DATA.dll
-C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\bin\Debug\net6.0\Yad2.DATA.runtimeconfig.json
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\obj\Debug\net6.0\Yad2.DATA.genruntimeconfig.cache
+C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2.DATA\obj\Debug\net6.0\ref\Yad2.DATA.dll
