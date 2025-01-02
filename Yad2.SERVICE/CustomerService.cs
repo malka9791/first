@@ -26,16 +26,20 @@ namespace Yad2.SERVICE
         public void AddValue(Customer customer) 
         { 
             _customerRepository.Customers.Add(customer);
+            _customerRepository.Save();
         }
         public void Update(Customer customer) {
             _customerRepository.Customers.Update( customer);
+            _customerRepository.Save();
         }
         public void Delete(Customer c)
         {
             _customerRepository.Customers.Delete(c);
+            _customerRepository.Save();
         }
         public void UpdateStatus(int id,bool status) {
             _customerRepository.Customer.Status(id, status);
+            _customerRepository.Save();
         }
     }
 }

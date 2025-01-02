@@ -1,4 +1,9 @@
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\CoverletSourceRootsMapping
+C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\UnitTest.csproj.AssemblyReference.cache
+C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\UnitTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\UnitTest.AssemblyInfoInputs.cache
+C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\UnitTest.AssemblyInfo.cs
+C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\UnitTest.csproj.CoreCompileInputs.cache
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\testhost.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\Yad2.API.deps.json
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\Yad2.API.runtimeconfig.json
@@ -13,6 +18,8 @@ C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\UnitTest.runtimeconfig.json
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\UnitTest.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\UnitTest.pdb
+C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\CsvHelper.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
@@ -147,11 +154,6 @@ C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\Yad2.CORE.pdb
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\Yad2.DATA.pdb
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\bin\Debug\net6.0\Yad2.SERVICE.pdb
-C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\UnitTest.csproj.AssemblyReference.cache
-C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\UnitTest.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\UnitTest.AssemblyInfoInputs.cache
-C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\UnitTest.AssemblyInfo.cs
-C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\UnitTest.csproj.CoreCompileInputs.cache
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\UnitTest.csproj.CopyComplete
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\UnitTest.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\UnitTest\obj\Debug\net6.0\refint\UnitTest.dll

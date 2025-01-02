@@ -5,6 +5,8 @@ C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2\bin\Debug\net6.0\Ya
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2\bin\Debug\net6.0\Yad2.API.runtimeconfig.json
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2\bin\Debug\net6.0\Yad2.API.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2\bin\Debug\net6.0\Yad2.API.pdb
+C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2\bin\Debug\net6.0\CsvHelper.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2\bin\Debug\net6.0\Humanizer.dll
 C:\Users\user1\Documents\מלי\שנה ב\net core\Yad2\Yad2\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll

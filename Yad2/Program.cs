@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Yad2.CORE;
 using Yad2.CORE.Repositories;
 using Yad2.CORE.Services;
 using Yad2.DATA;
@@ -26,7 +27,7 @@ builder.Services.AddScoped<IAdvertiserService, AdvertiserService>();
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
 //builder.Services.AddSingleton<DataContext>();
-
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddDbContext<DataContext>();
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(options =>

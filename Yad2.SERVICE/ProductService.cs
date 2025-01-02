@@ -25,17 +25,24 @@ namespace Yad2.SERVICE
         }
         public void AddProduct(Product product) {
              _productRepository.Products.Add(product);
+            _productRepository.Save();
         }
         public void PutValue(Product product)
         {
             _productRepository.Products.Update(product);
+            _productRepository.Save();
+
         }
         public void Delete(Product p) {
             _productRepository.Products.Delete(p);
+            _productRepository.Save();
+
         }
         public void UpdatePrice(int id,double price)
         {
             _productRepository.Product.UpdatePrice(id,price);
+            _productRepository.Save();
+
         }
     }
 }

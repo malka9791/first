@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Yad2.CORE.DTOs;
 using Yad2.CORE.Models;
 using Yad2.CORE.Services;
 
@@ -13,43 +15,52 @@ namespace Yad2.Controllers
     {
         
         private readonly IAdvertiserService _advertiserService;
+        private readonly IMapper _mapper;
         // GET: api/<advertisersController>
-        public AdvertiserController(IAdvertiserService context)
+        public AdvertiserController(IAdvertiserService context,IMapper mapper)
         {
             _advertiserService = context;
+            _mapper = mapper;
         }
         [HttpGet]
-        public IEnumerable<Advertiser> Get()
+        public ActionResult Get()
         {
-            return _advertiserService.GetAll() ;
+            var list=_advertiserService.GetAll() ;
+            var listDto=_mapper.Map<IEnumerable<AdvertisterDTO>>(list);
+            return Ok(listDto);
         }
 
         // GET api/<AdvertisersController>/5
         [HttpGet("{id}")]
-        public Advertiser Get(int id)
+        public ActionResult Get(int id)
         {
-            return _advertiserService.GetById(id);
+            var advertister = _advertiserService.GetById(id);
+            var advertisterDto=_mapper.Map<AdvertisterDTO>(advertister);
+            return Ok(advertisterDto);
         }
 
         // POST api/<AdvertisersController>
         [HttpPost]
-        public void Post([FromBody] Advertiser value)
+        public void Post([FromBody] AdvertisterPost value)
         {
-           _advertiserService.AddValue(value);
+            var dto = _mapper.Map<Advertiser>(value);
+           _advertiserService.AddValue(dto);
         }
 
         // PUT api/<AdvertisersController>/5
         [HttpPut(/*"{id}"*/)]
-        public void Put([FromBody] Advertiser value)
+        public void Put([FromBody] AdvertisterUpdate value)
         {
-            _advertiserService.PutValue( value);
+            var dto = _mapper.Map<Advertiser>(value);
+            _advertiserService.PutValue( dto);
         }
 
         // DELETE api/<AdvertisersController>/5
         [HttpDelete("{advertisers}")]
-        public void Delete(Advertiser advertiser)
+        public void Delete(AdvertisterUpdate advertiser)
         {
-            _advertiserService.Delete(advertiser);
+            var dto = _mapper.Map<Advertiser>(advertiser);
+            _advertiserService.Delete(dto);
         }
         [HttpPut("{id}/status")]
         public void Status(int id, string status)

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Yad2.CORE.DTOs;
 using Yad2.CORE.Models;
 using Yad2.CORE.Services;
 using Yad2.SERVICE;
@@ -15,54 +17,51 @@ namespace Yad2.API.Controllers
         // GET: api/<CustomerController>
 
         private readonly ICustomerService _customerService;
-        public CustomerController(ICustomerService customerservice)
+        private readonly IMapper _mapper;
+        public CustomerController(ICustomerService customerservice,IMapper mapper)
         {
+            _mapper=mapper;
             _customerService = customerservice;
         }
         [HttpGet]
-        public IEnumerable<Customer> Get()
+        public ActionResult Get()
         {
-            return _customerService.GetAll();
+            var list= _customerService.GetAll();
+            var listDto=_mapper.Map<IEnumerable<CustomerDTO>>(list);
+            return Ok(listDto);
         }
 
         //GET api/<CustomerController>/5
         [HttpGet("{id}")]
-        public Customer Get(int id)
+        public ActionResult Get(int id)
         {
-            return _customerService.GetById(id);
+            var customer=_customerService.GetById(id);
+            var dto=_mapper.Map<CustomerDTO>(customer);
+            return Ok(dto);
         }
 
         // POST api/<CustomerController>
         [HttpPost]
-        public void Post([FromBody] Customer value)
+        public void Post([FromBody] CustomerPost value)
         {
-            _customerService.AddValue(value);
+            var dto = _mapper.Map<Customer>(value);
+            _customerService.AddValue(dto);
         }
 
         // PUT api/<CustomerController>/5
         [HttpPut("{customer}")]
-
-
-
-
-
-
-
-
-
-
-
-
-        public void Put(/*int id,*/ [FromBody] Customer value)
+        public void Put(/*int id,*/ [FromBody] CustomerUpdate value)
         {
-            _customerService.Update(value);
+            var dto = _mapper.Map<Customer>(value);
+            _customerService.Update(dto);
         }
 
         //// DELETE api/<CustomerController>/5
         [HttpDelete("{customer}")]
-        public void Delete(Customer c)
+        public void Delete(CustomerUpdate c)
         {
-          _customerService.Delete(c);
+            var dto = _mapper.Map<Customer>(c);
+            _customerService.Delete(dto);
         }
         [HttpPut("{id}/Status")]
         public void UpdateStatus(int id, bool status)

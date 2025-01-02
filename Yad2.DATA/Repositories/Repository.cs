@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Yad2.CORE.Repositories;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Yad2.DATA.Repositories
 {
@@ -29,11 +30,17 @@ namespace Yad2.DATA.Repositories
         public IEnumerable<T> GetAll()
         {
            context1.Products.Include(a => a.Advertiser).ToList();
+           context1.Customers.Include(a => a.Products).ToList();
+           context1.Advertisers.Include(a => a.products).ToList();
+
             return _dbSet.ToList();
         }
         public T? GetById(int id) 
         {
-            return _dbSet.Find(id);
+            context1.Products.Include(a => a.Advertiser).FirstOrDefault(p=>p.Id==id);
+            context1.Customers.Include(a => a.Products).FirstOrDefault(p => p.Id == id);
+            context1.Advertisers.Include(a => a.products).FirstOrDefault(p => p.Id == id);
+            return _dbSet.FirstOrDefault(p => EF.Property<int>(p, "Id") == id);
         }
         public T Update(T entity)
         {

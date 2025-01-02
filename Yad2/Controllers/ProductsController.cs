@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Yad2.CORE.Services;
 using Yad2.CORE.Models;
+using AutoMapper;
+using Yad2.CORE.DTOs;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,47 +15,53 @@ namespace Yad2.Controllers
     public class ProductsController : ControllerBase
     {
         private static IProductService _productService;
-
-        public ProductsController(IProductService context)
+        private readonly IMapper _mapper;
+        public ProductsController(IProductService context,IMapper mapper)
         {
             _productService = context;
+            _mapper = mapper;
         }
         // GET: api/<productsController>
         [HttpGet]
-        public IEnumerable<Product> Get()
+        public ActionResult Get()
         {
-            return _productService.GetAll();
+            var list = _productService.GetAll();
+            var listdto=_mapper.Map<IEnumerable<ProductDTO>>(list);
+            return Ok(listdto);
         }
 
         // GET api/<productsController>/5
         [HttpGet("{id}")]
-        public Product Get(int id)
+        public ActionResult Get(int id)
         {
-
-            return _productService.GetById(id);
-  
+            var pro=_productService.GetById(id);
+            var dto=_mapper.Map<ProductDTO>(pro);
+            return Ok(dto);
         }
 
         // POST api/<productsController>
         [HttpPost]
-        public void Post([FromBody] Product value)
+        public void Post([FromBody] ProductDTO value)
         {
-            _productService.AddProduct(value);
+            var dto=_mapper.Map<Product>(value);
+            _productService.AddProduct(dto);
 
         }
 
         // PUT api/<productsController>/5
         [HttpPut("{products}")]
-        public void Put(/*int id,*/ [FromBody] Product value)
+        public void Put(/*int id,*/ [FromBody] ProductUpdate value)
         {
-            _productService.PutValue(/*id,*/ value);
+            var dto=_mapper.Map<Product>(value);
+            _productService.PutValue(/*id,*/ dto);
         }
 
         // DELETE api/<productsController>/5
         [HttpDelete("{product}")]
-        public void Delete(Product p)
+        public void Delete(ProductUpdate p)
         {
-            _productService.Delete(p);
+            var dto= _mapper.Map<Product>(p);
+            _productService.Delete(dto);
         }
         [HttpPut("{id}/price")]
         public void UpdatePrice(int id, int price)

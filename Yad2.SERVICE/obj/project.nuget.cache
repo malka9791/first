@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "yZrFdy2I6hd5L5dzLyjxmg58uYKAksF83V2lLxQcIgo4+P7GL9vI7zkm8zuptZJcefNr9xCL3LTaiQE0dg7qmw==",
+  "dgSpecHash": "H1QFLVQh+UVAd8zsaI8wdJ3rKfUgxF54VIKZuPZX0W2beMBVgyFPPA2/L+S6AFxy+Ys4FC9LWKhbozoKADNW0A==",
   "success": true,
   "projectFilePath": "C:\\Users\\user1\\Documents\\מלי\\שנה ב\\net core\\Yad2\\Yad2.SERVICE\\Yad2.SERVICE.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\user1\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\user1\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

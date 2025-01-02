@@ -11,8 +11,8 @@ using Yad2.DATA;
 namespace Yad2.DATA.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20241217123803_new2")]
-    partial class new2
+    [Migration("20250102133036_bs2")]
+    partial class bs2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,21 +23,6 @@ namespace Yad2.DATA.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CustomerProduct", b =>
-                {
-                    b.Property<int>("CustomersId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CustomersId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("CustomerProduct");
-                });
-
             modelBuilder.Entity("Yad2.CORE.Models.Advertiser", b =>
                 {
                     b.Property<int>("Id")
@@ -45,10 +30,6 @@ namespace Yad2.DATA.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Kind_Advertiser")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -95,10 +76,10 @@ namespace Yad2.DATA.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("AdvId")
+                    b.Property<int>("AdvertiserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AdvertiserId")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -116,22 +97,9 @@ namespace Yad2.DATA.Migrations
 
                     b.HasIndex("AdvertiserId");
 
+                    b.HasIndex("CustomerId");
+
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("CustomerProduct", b =>
-                {
-                    b.HasOne("Yad2.CORE.Models.Customer", null)
-                        .WithMany()
-                        .HasForeignKey("CustomersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Yad2.CORE.Models.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Yad2.CORE.Models.Product", b =>
@@ -142,12 +110,25 @@ namespace Yad2.DATA.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Yad2.CORE.Models.Customer", "Customers")
+                        .WithMany("Products")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Advertiser");
+
+                    b.Navigation("Customers");
                 });
 
             modelBuilder.Entity("Yad2.CORE.Models.Advertiser", b =>
                 {
                     b.Navigation("products");
+                });
+
+            modelBuilder.Entity("Yad2.CORE.Models.Customer", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
