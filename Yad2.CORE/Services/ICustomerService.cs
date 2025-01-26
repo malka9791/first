@@ -9,11 +9,11 @@ namespace Yad2.CORE.Services
 {
     public interface ICustomerService
     {
-        IEnumerable<Customer> GetAll();
-        Customer GetById(int id);
-        void AddValue(Customer customer);
-        void Update(Customer customer);
-        void Delete(Customer c);
+        Task<IEnumerable<Customer>> GetAllAsync();
+        Task<Customer> GetByIdAsync(int id);
+        Task<Customer> AddValueAsync(Customer Customer);
+        Task PutValueAsync(Customer Customer);
+        Task DeleteAsync(Customer a);
         public void UpdateStatus(int id, bool status);
 
 

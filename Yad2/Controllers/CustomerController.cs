@@ -24,44 +24,44 @@ namespace Yad2.API.Controllers
             _customerService = customerservice;
         }
         [HttpGet]
-        public ActionResult Get()
+        public async Task<ActionResult> GetAllAsync()
         {
-            var list= _customerService.GetAll();
+            var list=await _customerService.GetAllAsync();
             var listDto=_mapper.Map<IEnumerable<CustomerDTO>>(list);
             return Ok(listDto);
         }
 
         //GET api/<CustomerController>/5
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public async Task<ActionResult> GetByIdAsync(int id)
         {
-            var customer=_customerService.GetById(id);
+            var customer=await _customerService.GetByIdAsync(id);
             var dto=_mapper.Map<CustomerDTO>(customer);
             return Ok(dto);
         }
 
         // POST api/<CustomerController>
         [HttpPost]
-        public void Post([FromBody] CustomerPost value)
+        public async Task PostAsync([FromBody] CustomerPost value)
         {
             var dto = _mapper.Map<Customer>(value);
-            _customerService.AddValue(dto);
+           await _customerService.AddValueAsync(dto);
         }
 
         // PUT api/<CustomerController>/5
         [HttpPut("{customer}")]
-        public void Put(/*int id,*/ [FromBody] CustomerUpdate value)
+        public async void Put(/*int id,*/ [FromBody] CustomerUpdate value)
         {
             var dto = _mapper.Map<Customer>(value);
-            _customerService.Update(dto);
+           await _customerService.PutValueAsync(dto);
         }
 
         //// DELETE api/<CustomerController>/5
         [HttpDelete("{customer}")]
-        public void Delete(CustomerUpdate c)
+        public async void DeleteAsync(CustomerUpdate c)
         {
             var dto = _mapper.Map<Customer>(c);
-            _customerService.Delete(dto);
+           await _customerService.DeleteAsync(dto);
         }
         [HttpPut("{id}/Status")]
         public void UpdateStatus(int id, bool status)

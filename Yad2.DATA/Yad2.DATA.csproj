@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Yad2.CORE\Yad2.CORE.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

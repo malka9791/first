@@ -30,9 +30,9 @@ namespace Yad2.DATA.Repositories
             Product = product;  
             Advertiser = advertiser;
         }
-        public void Save()
+        public async Task SaveAsync()
         {
-            _context.SaveChanges();
+          await  _context.SaveChangesAsync();
         }
     }
 }

@@ -15,6 +15,6 @@ namespace Yad2.CORE.Repositories
         public ICustomerRepository Customer { get; }
         public IProductRepository Product { get; }
         public IAdvertiserRepository Advertiser { get; }
-        void Save();
+        Task SaveAsync();
     }
 }

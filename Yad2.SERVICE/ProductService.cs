@@ -16,32 +16,33 @@ namespace Yad2.SERVICE
         {
             _productRepository = productrepository;
         }
-        public IEnumerable<Product> GetAll()
+        public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            return _productRepository.Products.GetAll();
+            return await _productRepository.Products.GetAllAsync();
         }
-        public Product GetById(int id) {
-            return _productRepository.Products.GetById(id);
+        public async Task<Product> GetByIdAsync(int id) {
+            return await _productRepository.Products.GetByIdAsync(id);
         }
-        public void AddProduct(Product product) {
-             _productRepository.Products.Add(product);
-            _productRepository.Save();
+        public async Task<Product> AddValueAsync(Product product) {
+            await _productRepository.Products.AddAsync(product);
+           await _productRepository.SaveAsync();
+            return product;
         }
-        public void PutValue(Product product)
+        public async Task PutValueAsync(Product product)
         {
             _productRepository.Products.Update(product);
-            _productRepository.Save();
+           await _productRepository.SaveAsync();
 
         }
-        public void Delete(Product p) {
-            _productRepository.Products.Delete(p);
-            _productRepository.Save();
+        public async Task DeleteAsync(Product p) {
+           await _productRepository.Products.DeleteAsync(p);
+           await _productRepository.SaveAsync();
 
         }
-        public void UpdatePrice(int id,double price)
+        public async void UpdatePrice(int id,double price)
         {
             _productRepository.Product.UpdatePrice(id,price);
-            _productRepository.Save();
+           await _productRepository.SaveAsync();
 
         }
     }

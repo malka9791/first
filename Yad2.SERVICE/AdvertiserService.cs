@@ -16,31 +16,32 @@ namespace Yad2.SERVICE
         {
             _advertiserRepository = advertiserRepository;
         }
-        public IEnumerable<Advertiser> GetAll()
+        public async Task<IEnumerable<Advertiser>> GetAllAsync()
         {
-            return _advertiserRepository.Advertisers.GetAll();
+            return await _advertiserRepository.Advertisers.GetAllAsync();
         }
-        public Advertiser GetById(int id)
+        public async Task<Advertiser> GetByIdAsync(int id)
         {
-            return _advertiserRepository.Advertisers.GetById(id);
+            return await _advertiserRepository.Advertisers.GetByIdAsync(id);
         }
-        public void AddValue(Advertiser advertiser) {
-            _advertiserRepository.Advertisers.Add(advertiser);
-            _advertiserRepository.Save();
+        public async Task<Advertiser> AddValueAsync(Advertiser advertiser) {
+            await _advertiserRepository.Advertisers.AddAsync(advertiser);
+            await _advertiserRepository.SaveAsync();
+            return advertiser;
         }
-        public void PutValue(Advertiser advertiser) 
+        public async Task PutValueAsync(Advertiser advertiser) 
         {
-            _advertiserRepository.Advertisers.Update(advertiser);
-            _advertiserRepository.Save();
+           _advertiserRepository.Advertisers.Update(advertiser);
+            await _advertiserRepository.SaveAsync();
         }
-        public void Delete(Advertiser a) {
-            _advertiserRepository.Advertisers.Delete(a);
-            _advertiserRepository.Save();
+        public async Task DeleteAsync(Advertiser a) {
+          await  _advertiserRepository.Advertisers.DeleteAsync(a);
+           await  _advertiserRepository.SaveAsync();
         }
-        public void Status(int id,string status)
+        public async Task Status(int id,string status)
         {
             _advertiserRepository.Advertiser.StatusVal(id, status);
-            _advertiserRepository.Save();
+            await _advertiserRepository.SaveAsync();
         }
     }
 }

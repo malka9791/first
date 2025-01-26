@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Yad2.CORE.Models;
 using Yad2.CORE.Repositories;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -18,29 +19,31 @@ namespace Yad2.DATA.Repositories
             context1 = context;
             _dbSet = context.Set<T>();
         }
-        public T Add(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            _dbSet.Add(entity);
+            await _dbSet.AddAsync(entity);
             return entity;
         }
-        public void Delete(T entity)
+        public async Task DeleteAsync(T entity)
         {
-            _dbSet.Remove(entity);
+            _dbSet.Remove(entity);  
+            await Task.CompletedTask; 
         }
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-           context1.Products.Include(a => a.Advertiser).ToList();
+           context1.Products.Include(a => a.Advertiser).Include(a => a.Customer).ToList();
            context1.Customers.Include(a => a.Products).ToList();
            context1.Advertisers.Include(a => a.products).ToList();
-
-            return _dbSet.ToList();
+            var res = await _dbSet.ToListAsync();
+            return res;
         }
-        public T? GetById(int id) 
+        public async Task<T?> GetByIdAsync(int id) 
         {
             context1.Products.Include(a => a.Advertiser).FirstOrDefault(p=>p.Id==id);
             context1.Customers.Include(a => a.Products).FirstOrDefault(p => p.Id == id);
             context1.Advertisers.Include(a => a.products).FirstOrDefault(p => p.Id == id);
-            return _dbSet.FirstOrDefault(p => EF.Property<int>(p, "Id") == id);
+            var res=await _dbSet.FirstOrDefaultAsync(p => EF.Property<int>(p, "Id") == id);
+            return res;
         }
         public T Update(T entity)
         {

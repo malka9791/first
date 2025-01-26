@@ -9,11 +9,11 @@ namespace Yad2.CORE.Services
 {
     public interface IProductService
     {
-        IEnumerable<Product> GetAll();
-        Product GetById(int id);
-        void AddProduct(Product product); 
-        void PutValue( Product value);
-        void Delete(Product p);
+        Task<IEnumerable<Product>> GetAllAsync();
+        Task<Product> GetByIdAsync(int id);
+        Task<Product> AddValueAsync(Product Product);
+        Task PutValueAsync(Product Product);
+        Task DeleteAsync(Product a);
         void UpdatePrice(int id, double price);
 
     }

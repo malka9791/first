@@ -15,31 +15,33 @@ namespace Yad2.SERVICE
         {
             _customerRepository = customerepository;
         }
-        public IEnumerable<Customer> GetAll()
+        public async Task<IEnumerable<Customer>> GetAllAsync()
         {
-            return _customerRepository.Customers.GetAll();
+            return await _customerRepository.Customers.GetAllAsync();
         }
-        public Customer GetById(int id)
+        public async Task<Customer> GetByIdAsync(int id)
         {
-            return _customerRepository.Customers.GetById(id);
+            return await _customerRepository.Customers.GetByIdAsync(id);
         }
-        public void AddValue(Customer customer) 
-        { 
-            _customerRepository.Customers.Add(customer);
-            _customerRepository.Save();
-        }
-        public void Update(Customer customer) {
-            _customerRepository.Customers.Update( customer);
-            _customerRepository.Save();
-        }
-        public void Delete(Customer c)
+        public async Task<Customer> AddValueAsync(Customer customer)
         {
-            _customerRepository.Customers.Delete(c);
-            _customerRepository.Save();
+            await _customerRepository.Customers.AddAsync(customer);
+            await _customerRepository.SaveAsync();
+            return customer;
+        }
+        public async Task PutValueAsync(Customer customer)
+        {
+            _customerRepository.Customers.Update(customer);
+            await _customerRepository.SaveAsync();
+        }
+        public async Task DeleteAsync(Customer a)
+        {
+            await _customerRepository.Customers.DeleteAsync(a);
+            await _customerRepository.SaveAsync();
         }
         public void UpdateStatus(int id,bool status) {
             _customerRepository.Customer.Status(id, status);
-            _customerRepository.Save();
+            _customerRepository.SaveAsync();
         }
     }
 }

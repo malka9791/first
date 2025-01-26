@@ -9,12 +9,12 @@ namespace Yad2.CORE.Services
 {
     public interface IAdvertiserService
     {
-        IEnumerable<Advertiser> GetAll();
-        Advertiser GetById(int id);
-        void AddValue(Advertiser value);
-        void PutValue( Advertiser value);
-        void Delete(Advertiser a);
-        void Status(int id, string status);
+        Task<IEnumerable<Advertiser>> GetAllAsync();
+        Task<Advertiser> GetByIdAsync(int id);
+        Task<Advertiser> AddValueAsync(Advertiser advertiser);
+        Task PutValueAsync(Advertiser advertiser);
+        Task DeleteAsync(Advertiser a);
+        Task Status(int id, string status);
 
     }
 }

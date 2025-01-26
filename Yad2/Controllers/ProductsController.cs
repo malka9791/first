@@ -23,45 +23,45 @@ namespace Yad2.Controllers
         }
         // GET: api/<productsController>
         [HttpGet]
-        public ActionResult Get()
+        public async Task<ActionResult> Get()
         {
-            var list = _productService.GetAll();
+            var list =await _productService.GetAllAsync();
             var listdto=_mapper.Map<IEnumerable<ProductDTO>>(list);
             return Ok(listdto);
         }
 
         // GET api/<productsController>/5
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public async Task<ActionResult> GetByIdAsync(int id)
         {
-            var pro=_productService.GetById(id);
+            var pro=await _productService.GetByIdAsync(id);
             var dto=_mapper.Map<ProductDTO>(pro);
             return Ok(dto);
         }
 
         // POST api/<productsController>
         [HttpPost]
-        public void Post([FromBody] ProductDTO value)
+        public async Task Post([FromBody] ProductDTO value)
         {
             var dto=_mapper.Map<Product>(value);
-            _productService.AddProduct(dto);
+          await  _productService.AddValueAsync(dto);
 
         }
 
         // PUT api/<productsController>/5
         [HttpPut("{products}")]
-        public void Put(/*int id,*/ [FromBody] ProductUpdate value)
+        public async Task Put(/*int id,*/ [FromBody] ProductUpdate value)
         {
             var dto=_mapper.Map<Product>(value);
-            _productService.PutValue(/*id,*/ dto);
+           await _productService.PutValueAsync(/*id,*/ dto);
         }
 
         // DELETE api/<productsController>/5
         [HttpDelete("{product}")]
-        public void Delete(ProductUpdate p)
+        public async Task Delete(ProductUpdate p)
         {
             var dto= _mapper.Map<Product>(p);
-            _productService.Delete(dto);
+           await _productService.DeleteAsync(dto);
         }
         [HttpPut("{id}/price")]
         public void UpdatePrice(int id, int price)

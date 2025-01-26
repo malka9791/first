@@ -22,6 +22,7 @@ namespace Yad2.DATA
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=My_db");
             optionsBuilder.LogTo(messege => Debug.WriteLine(messege));
         }
+       
         //public DataContext(
         //{
         //    Advertisers = new List<Advertiser> { new Advertiser { Id = 1, Id_product = 1, Kind_Advertiser = "old", Name = "Chaim",Status="ective" } };
