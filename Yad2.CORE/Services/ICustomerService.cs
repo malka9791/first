@@ -7,13 +7,9 @@ using Yad2.CORE.Models;
 
 namespace Yad2.CORE.Services
 {
-    public interface ICustomerService
+    public interface ICustomerService:IRepositoryService<Customer>
     {
-        Task<IEnumerable<Customer>> GetAllAsync();
-        Task<Customer> GetByIdAsync(int id);
-        Task<Customer> AddValueAsync(Customer Customer);
-        Task PutValueAsync(Customer Customer);
-        Task DeleteAsync(Customer a);
+      
         public void UpdateStatus(int id, bool status);
 
 
