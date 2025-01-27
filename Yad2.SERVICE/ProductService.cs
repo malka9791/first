@@ -18,15 +18,14 @@ namespace Yad2.SERVICE
         }
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            return await _productRepository.Products.GetAllAsync();
+            return await Task.Run(() => _productRepository.Products.GetAll());
         }
         public async Task<Product> GetByIdAsync(int id) {
-            return await _productRepository.Products.GetByIdAsync(id);
+            return await Task.Run(()=>_productRepository.Products.GetById(id));
         }
-        public async Task<Product> AddValueAsync(Product product) {
-            await _productRepository.Products.AddAsync(product);
+        public async Task AddValueAsync(Product product) {
+             _productRepository.Products.Add(product);
            await _productRepository.SaveAsync();
-            return product;
         }
         public async Task PutValueAsync(Product product)
         {
@@ -35,7 +34,7 @@ namespace Yad2.SERVICE
 
         }
         public async Task DeleteAsync(Product p) {
-           await _productRepository.Products.DeleteAsync(p);
+            _productRepository.Products.Delete(p);
            await _productRepository.SaveAsync();
 
         }

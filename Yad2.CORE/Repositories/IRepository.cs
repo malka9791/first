@@ -8,11 +8,11 @@ namespace Yad2.CORE.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<T?> GetByIdAsync(int id);
-        Task<T> AddAsync(T entity);
+        IEnumerable<T> GetAll();
+        T? GetById(int id);
+        T Add(T entity);
         T Update(T entity);
-        Task DeleteAsync(T entity);
+        void Delete(T entity);
 
     }
 }

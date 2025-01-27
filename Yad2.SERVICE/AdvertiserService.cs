@@ -18,16 +18,15 @@ namespace Yad2.SERVICE
         }
         public async Task<IEnumerable<Advertiser>> GetAllAsync()
         {
-            return await _advertiserRepository.Advertisers.GetAllAsync();
+            return await Task.Run(()=>_advertiserRepository.Advertisers.GetAll());
         }
         public async Task<Advertiser> GetByIdAsync(int id)
         {
-            return await _advertiserRepository.Advertisers.GetByIdAsync(id);
+            return await Task.Run(()=>_advertiserRepository.Advertisers.GetById(id));
         }
-        public async Task<Advertiser> AddValueAsync(Advertiser advertiser) {
-            await _advertiserRepository.Advertisers.AddAsync(advertiser);
+        public async Task AddValueAsync(Advertiser advertiser) {
+            _advertiserRepository.Advertisers.Add(advertiser);
             await _advertiserRepository.SaveAsync();
-            return advertiser;
         }
         public async Task PutValueAsync(Advertiser advertiser) 
         {
@@ -35,7 +34,7 @@ namespace Yad2.SERVICE
             await _advertiserRepository.SaveAsync();
         }
         public async Task DeleteAsync(Advertiser a) {
-          await  _advertiserRepository.Advertisers.DeleteAsync(a);
+           _advertiserRepository.Advertisers.Delete(a);
            await  _advertiserRepository.SaveAsync();
         }
         public async Task Status(int id,string status)

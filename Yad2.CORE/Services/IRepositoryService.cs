@@ -11,7 +11,7 @@ namespace Yad2.CORE.Services
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task<T> AddValueAsync(T entity);
+        Task AddValueAsync(T entity);
         Task PutValueAsync(T entity);
         Task DeleteAsync(T a);
     }

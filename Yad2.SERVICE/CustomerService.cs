@@ -17,17 +17,16 @@ namespace Yad2.SERVICE
         }
         public async Task<IEnumerable<Customer>> GetAllAsync()
         {
-            return await _customerRepository.Customers.GetAllAsync();
+            return await Task.Run(()=>_customerRepository.Customers.GetAll());
         }
         public async Task<Customer> GetByIdAsync(int id)
         {
-            return await _customerRepository.Customers.GetByIdAsync(id);
+            return await Task.Run(()=>_customerRepository.Customers.GetById(id));
         }
-        public async Task<Customer> AddValueAsync(Customer customer)
+        public async Task AddValueAsync(Customer customer)
         {
-            await _customerRepository.Customers.AddAsync(customer);
+            _customerRepository.Customers.Add(customer);
             await _customerRepository.SaveAsync();
-            return customer;
         }
         public async Task PutValueAsync(Customer customer)
         {
@@ -36,12 +35,12 @@ namespace Yad2.SERVICE
         }
         public async Task DeleteAsync(Customer a)
         {
-            await _customerRepository.Customers.DeleteAsync(a);
+           _customerRepository.Customers.Delete(a);
             await _customerRepository.SaveAsync();
         }
-        public void UpdateStatus(int id,bool status) {
+        public async Task UpdateStatusAsync(int id,bool status) {
             _customerRepository.Customer.Status(id, status);
-            _customerRepository.SaveAsync();
+            await _customerRepository.SaveAsync();
         }
     }
 }

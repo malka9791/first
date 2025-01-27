@@ -10,7 +10,7 @@ namespace Yad2.CORE.Services
     public interface ICustomerService:IRepositoryService<Customer>
     {
       
-        public void UpdateStatus(int id, bool status);
+         Task UpdateStatusAsync(int id, bool status);
 
 
     }

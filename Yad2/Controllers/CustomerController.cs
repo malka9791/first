@@ -66,7 +66,7 @@ namespace Yad2.API.Controllers
         [HttpPut("{id}/Status")]
         public void UpdateStatus(int id, bool status)
         {
-           _customerService.UpdateStatus(id, status);
+           _customerService.UpdateStatusAsync(id, status);
         }
     }
 }
