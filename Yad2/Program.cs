@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Yad2.API.middleWares;
 using Yad2.CORE;
 using Yad2.CORE.Repositories;
 using Yad2.CORE.Services;
@@ -46,6 +47,7 @@ app.UseHttpsRedirection();
 app.UseCors("MyPolicy");
 app.UseAuthorization();
 
+app.UseMiddleware<ShabbatMiddleWare>();
 app.MapControllers();
 
 app.Run();
